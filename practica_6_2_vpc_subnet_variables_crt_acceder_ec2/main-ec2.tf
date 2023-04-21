@@ -12,6 +12,16 @@ resource "aws_instance" "instancia_rn" {
   lifecycle {
     create_before_destroy = true
   }
+
+  #EJECUTAR PROVISIONER LOCAL Y REMOTO
+  provisioner "local-exec" {
+    command = "echo Instancia creada con la ip ${aws_instance.instancia_rn.public_ip} > provisioner_public_ip.txt"
+  }
+
+  provisioner "local-exec" {
+    command = "echo Instancia creada con la ip ${aws_instance.instancia_rn.public_ip} > provisioner_public_ip.txt"
+  }
+
 }
 
 #SG PARA INSTANCIA
@@ -37,6 +47,6 @@ resource "aws_security_group" "sg_instance_rn" {
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "sg_instance_lab6"
   }
 }
