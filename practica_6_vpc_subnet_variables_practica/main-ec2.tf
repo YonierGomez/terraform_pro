@@ -10,9 +10,5 @@ resource "aws_instance" "instancia_rn" {
 
   lifecycle {
     create_before_destroy = true
-    ignore_changes = [
-      ami,
-      key_name
-    ]
   }
 }
